@@ -34,6 +34,17 @@ class LinkedList:
         newNode.next = temp.next
         temp.next = newNode
 
+    def inser_at_end(self, data):
+        newNode = Node(data)
+        if self.head == None:
+            self.head = newNode
+            return
+
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = newNode
+
 
 if __name__ == "__main__":
     llist = LinkedList()
@@ -55,5 +66,8 @@ if __name__ == "__main__":
     llist.insert_at_nth_pos(3, 1)  # List: 3 4
     llist.insert_at_nth_pos(5, 3)  # List  3, 4, 5
     llist.insert_at_nth_pos(6, 2)  # List  3, 6, 4, 5
+    llist.inser_at_end(12)
+    llist.inser_at_end(13)
+    llist.inser_at_end(18)
 
     llist.print_list()
