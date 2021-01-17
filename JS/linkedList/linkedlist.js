@@ -51,6 +51,17 @@ class LinkedList {
     }
     last.next = newNode;
   }
+  deleteAtPosition(n) {
+    let temp = this.head;
+    if (n === 1) {
+      this.head = temp.next;
+    }
+    for (let i = 1; i < n - 1; i++) {
+      temp = temp.next;
+    }
+    let nodeToDelete = temp.next;
+    temp.next = nodeToDelete.next;
+  }
 }
 
 const llist = new LinkedList();
@@ -69,5 +80,12 @@ llist.insertAtNthPositon(11, 3);
 llist.append(50);
 llist.append(60);
 llist.append(70);
+
+// delete at position n
+
+llist.deleteAtPosition(1);
+llist.deleteAtPosition(1);
+llist.deleteAtPosition(3);
+llist.deleteAtPosition(3);
 
 llist.printList();
