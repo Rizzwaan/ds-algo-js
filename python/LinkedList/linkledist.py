@@ -45,6 +45,18 @@ class LinkedList:
             last = last.next
         last.next = newNode
 
+    def delete_at_postion(self, n):
+        temp = self.head
+        if n == 1:
+            self.head = temp.next
+
+        for i in range(1, n - 1):
+            temp = temp.next
+
+        node_to_delete = temp.next
+
+        temp.next = node_to_delete.next
+
 
 if __name__ == "__main__":
     llist = LinkedList()
@@ -71,5 +83,11 @@ if __name__ == "__main__":
     llist.inser_at_end(12)
     llist.inser_at_end(13)
     llist.inser_at_end(18)
+
+    # delete
+    llist.delete_at_postion(1)
+    llist.delete_at_postion(1)
+    llist.delete_at_postion(2)
+    llist.delete_at_postion(4)
 
     llist.print_list()
