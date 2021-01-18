@@ -8,6 +8,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    # print items oflinkedlist
     def print_list(self):
         temp = self.head
         while temp:
@@ -15,11 +16,13 @@ class LinkedList:
             temp = temp.next
 
     # time complexity O(1)
+    # Add at the beginning of the list
     def prepend(self, data):
         newNode = Node(data)
         newNode.next = self.head
         self.head = newNode
 
+    # Add at nth position of the list
     def insert_at_nth_pos(self, data, n):
         newNode = Node(data)
         if n == 1:
@@ -34,6 +37,7 @@ class LinkedList:
         newNode.next = temp.next
         temp.next = newNode
 
+    # Add at end of the list
     def inser_at_end(self, data):
         newNode = Node(data)
         if self.head == None:
@@ -45,6 +49,7 @@ class LinkedList:
             last = last.next
         last.next = newNode
 
+    # delete at a given position
     def delete_at_postion(self, n):
         temp = self.head
         if n == 1:
@@ -56,6 +61,20 @@ class LinkedList:
         node_to_delete = temp.next
 
         temp.next = node_to_delete.next
+
+    # reverse a linked list iterative approach
+    def reverse_iterative(self):
+        prev_node = None
+        next_node = None
+        current_node = self.head
+
+        while current_node:
+            next_node = current_node.next
+            current_node.next = prev_node
+            prev_node = current_node
+            current_node = next_node
+
+        self.head = prev_node
 
 
 if __name__ == "__main__":
@@ -85,9 +104,15 @@ if __name__ == "__main__":
     llist.inser_at_end(18)
 
     # delete
-    llist.delete_at_postion(1)
-    llist.delete_at_postion(1)
-    llist.delete_at_postion(2)
+    # llist.delete_at_postion(1)
+    # llist.delete_at_postion(1)
+    # llist.delete_at_postion(2)
     llist.delete_at_postion(4)
 
+    # reverse iterative approach
+
+    llist.print_list()
+    print("-----------------------")
+    llist.reverse_iterative()
+    print("-----------------------")
     llist.print_list()
