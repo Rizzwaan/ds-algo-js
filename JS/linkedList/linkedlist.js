@@ -9,6 +9,7 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
+  /* Print the linked list */
   printList() {
     let temp = this.head;
     while (temp) {
@@ -16,12 +17,13 @@ class LinkedList {
       temp = temp.next;
     }
   }
+  /* add node in the beginning */
   prepend(data) {
     let newNode = new Node(data);
     newNode.next = this.head;
     this.head = newNode;
   }
-
+  /* Insert a node at a given position */
   insertAtNthPositon(data, n) {
     let newNode = new Node(data);
     if (n == 1) {
@@ -37,7 +39,7 @@ class LinkedList {
     newNode.next = temp.next;
     temp.next = newNode;
   }
-
+  /* add node at the end of linked list */
   append(data) {
     let newNode = new Node(data);
     if (this.head == null) {
@@ -51,6 +53,7 @@ class LinkedList {
     }
     last.next = newNode;
   }
+  /* delete a node at a given position */
   deleteAtPosition(n) {
     let temp = this.head;
     if (n === 1) {
@@ -61,6 +64,19 @@ class LinkedList {
     }
     let nodeToDelete = temp.next;
     temp.next = nodeToDelete.next;
+  }
+  /* Reverse a linked list Iterative */
+  reverseIterative() {
+    let prevNode = null;
+    let nextNode;
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
   }
 }
 
@@ -88,4 +104,9 @@ llist.deleteAtPosition(1);
 llist.deleteAtPosition(3);
 llist.deleteAtPosition(3);
 
+// reverse a linked list iterative
+llist.printList();
+console.log("----------------");
+llist.reverseIterative();
+console.log("----------------");
 llist.printList();
