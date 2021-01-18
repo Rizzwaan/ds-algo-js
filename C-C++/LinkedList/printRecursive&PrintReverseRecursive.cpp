@@ -30,7 +30,7 @@ void PrintRecursive(struct Node* p){
 }
 // Print Reverse using recursion
 void PrintReverseRecursive(struct Node *p){
-   if(p== NULL){
+   if(p == NULL){
     return;
   }
  

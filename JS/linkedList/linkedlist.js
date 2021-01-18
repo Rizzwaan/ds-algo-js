@@ -78,6 +78,23 @@ class LinkedList {
     }
     this.head = prevNode;
   }
+  /* Print linkedlist recursive */
+  printRecursive(head) {
+    if (head === null) {
+      return;
+    }
+    console.log(head.data);
+    this.printRecursive(head.next);
+  }
+
+  /* Print linkedlist recursive revers */
+  printRecursiveReverse(head) {
+    if (head === null) {
+      return;
+    }
+    this.printRecursiveReverse(head.next);
+    console.log(head.data);
+  }
 }
 
 const llist = new LinkedList();
@@ -105,8 +122,14 @@ llist.deleteAtPosition(3);
 llist.deleteAtPosition(3);
 
 // reverse a linked list iterative
-llist.printList();
-console.log("----------------");
-llist.reverseIterative();
-console.log("----------------");
-llist.printList();
+// llist.printList();
+// console.log("----------------");
+// llist.reverseIterative();
+// console.log("----------------");
+// llist.printList();
+console.log("--------------------------");
+// llist.printRecursive(llist.head);
+// console.log("--------------------------");
+// llist.printRecursiveReverse(llist.head);
+console.log(llist.head);
+llist.printRecursiveReverse(llist.head);
