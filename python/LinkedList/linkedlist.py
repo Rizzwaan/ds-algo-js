@@ -3,10 +3,16 @@ class Node:
         self.data = data
         self.next = None
 
+    def __repr__(self):
+        return f"{self.data} -> {self.next}"
+
 
 class LinkedList:
     def __init__(self):
         self.head = None
+
+    def __repr__(self):
+        return f"{self.data},, {self.next}"
 
     # print items oflinkedlist
     def print_list(self):
@@ -68,13 +74,25 @@ class LinkedList:
         next_node = None
         current_node = self.head
 
-        while current_node:
+        while current_node != None:
             next_node = current_node.next
             current_node.next = prev_node
             prev_node = current_node
             current_node = next_node
 
         self.head = prev_node
+
+
+    def reverse_recursive(self, head_pointer):
+        if head_pointer.next == None:
+            self.head = head_pointer
+            return
+
+        self.reverse_recursive(head_pointer.next)
+        # here the magic happens
+        q = head_pointer.next
+        q.next = head_pointer
+        head_pointer.next = None
 
     # Print linked list recursive
     def print_linkedlist_recursive(self, head):
@@ -128,17 +146,17 @@ if __name__ == "__main__":
 
     # reverse iterative approach
 
-    # llist.print_list()
-    # print("-----------------------")
-    # llist.reverse_iterative()
-    # print("-----------------------")
-    # llist.print_list()
+    llist.print_list()
+    print("-----------------------")
+    llist.reverse_recursive(llist.head)
+    print("-----------------------")
+    llist.print_list()
 
     # llist.print_list()
 
     # print linkde list recursive
-    llist.print_linkedlist_recursive(llist.head)
+    # llist.print_linkedlist_recursive(llist.head)
 
     # print linked list reverse recursive
 
-    llist.print_linkedlist_recursive_reverse(llist.head)
+    # llist.print_linkedlist_recursive_reverse(llist.head)
